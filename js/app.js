@@ -678,10 +678,74 @@
   /* =========================================================
      Pagini
      ========================================================= */
+  // Afișul de introducere de pe pagina Acasă (foaie de caiet, scris de mână)
+  function posterIntro() {
+    const ol = items => items.map((t, i) => `<li><span class="pn">${i + 1}</span><span>${t}</span></li>`).join("");
+    const terms = [
+      ["Bază de date", "colecție de date organizate", "y"],
+      ["Tabel", "păstrează datele pe rânduri și coloane", "p"],
+      ["Câmp", "o singură informație (o coloană)", "g"],
+      ["Înregistrare", "setul complet de câmpuri (un rând)", "o"],
+      ["Interogare", "caută și filtrează datele", "v"],
+      ["Formular", "fereastră pentru introducerea și vizualizarea datelor", "b"],
+      ["Raport", "datele aranjate frumos, gata de tipărit", "g"],
+      ["Cheie primară", "identifică în mod unic fiecare înregistrare", "p"]
+    ];
+    const ico = {
+      db: `<svg viewBox="0 0 48 52"><ellipse cx="24" cy="9" rx="18" ry="6" fill="#bcd7f3"/><path d="M6 9v34c0 3.3 8 6 18 6s18-2.7 18-6V9" fill="#9cc3ec"/><path d="M6 20c0 3.3 8 6 18 6s18-2.7 18-6M6 31c0 3.3 8 6 18 6s18-2.7 18-6" fill="none" stroke="#1e3a8a" stroke-width="2"/><ellipse cx="24" cy="9" rx="18" ry="6" fill="none" stroke="#1e3a8a" stroke-width="2"/><path d="M6 9v34c0 3.3 8 6 18 6s18-2.7 18-6V9" fill="none" stroke="#1e3a8a" stroke-width="2"/></svg>`,
+      tb: `<svg viewBox="0 0 48 52"><rect x="4" y="6" width="40" height="40" rx="2" fill="#fff" stroke="#1e3a8a" stroke-width="2"/><rect x="4" y="6" width="40" height="10" fill="#7fb3e6" stroke="#1e3a8a" stroke-width="2"/><path d="M4 26h40M4 36h40M17 6v40M30 6v40" stroke="#1e3a8a" stroke-width="1.6"/></svg>`,
+      fm: `<svg viewBox="0 0 48 52"><rect x="8" y="4" width="34" height="44" rx="2" fill="#fff" stroke="#1e3a8a" stroke-width="2"/><rect x="14" y="11" width="22" height="6" rx="1" fill="none" stroke="#1e3a8a" stroke-width="1.6"/><rect x="14" y="22" width="22" height="6" rx="1" fill="none" stroke="#1e3a8a" stroke-width="1.6"/><rect x="14" y="33" width="22" height="6" rx="1" fill="none" stroke="#1e3a8a" stroke-width="1.6"/></svg>`,
+      rp: `<svg viewBox="0 0 48 52"><path d="M8 4h24l10 10v34H8z" fill="#fff" stroke="#1e3a8a" stroke-width="2"/><path d="M32 4v10h10" fill="none" stroke="#1e3a8a" stroke-width="2"/><rect x="14" y="34" width="5" height="9" fill="#f2a63a"/><rect x="22" y="28" width="5" height="15" fill="#7fb3e6"/><rect x="30" y="31" width="5" height="12" fill="#f2a63a"/><path d="M13 27l7-6 6 4 9-9" fill="none" stroke="#b4271f" stroke-width="2"/></svg>`
+    };
+    return `<section class="poster" aria-labelledby="posterTitle">
+      <div class="pp-holes" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="pp-in">
+        <div class="pp-top"><span>Liceul Teoretic „Panait Cerna” Brăila</span><span class="pp-date">TIC · clasa a X-a</span></div>
+        <h2 class="pp-title" id="posterTitle">Microsoft Access <span>– Introducere</span></h2>
+        <h3 class="pp-h pp-blk">Ce este Access?</h3>
+        <p class="pp-txt">Microsoft Access este un program de gestionare a bazelor de date, creat de Microsoft și inclus în pachetul Microsoft Office. Cu el creăm și administrăm baze de date în care <b>stocăm</b>, <b>organizăm</b> și <b>analizăm</b> informații.</p>
+        <h3 class="pp-h">Caracteristici Access</h3>
+        <ol class="pp-list">${ol([
+          "Oferă șabloane gata făcute pentru baze de date.",
+          "Permite crearea de tabele, interogări, formulare și rapoarte.",
+          "Are instrumente simple pentru a stoca și gestiona multe date.",
+          "Este util pentru sortarea, filtrarea și căutarea datelor.",
+          "Ajută la crearea relațiilor dintre tabele.",
+          "Salvează în format <i>.accdb</i> (sau vechiul <i>.mdb</i>) și exportă în PDF sau Excel."
+        ])}</ol>
+        <h3 class="pp-h">Termeni importanți</h3>
+        <dl class="pp-terms">${terms.map(([t, d, c]) => `<div><dt class="hl-${c}">${t}</dt><dd><span class="hl-${c} soft">${d}</span></dd></div>`).join("")}</dl>
+        <div class="pp-foot">
+          <div>
+            <h3 class="pp-h">La ce folosim Access?</h3>
+            <ol class="pp-list">${ol([
+              "Baze de date cu elevi și angajați.",
+              "Gestionarea inventarului și a stocurilor.",
+              "Evidența clienților.",
+              "Sisteme de facturare.",
+              "Evidența bibliotecii și a școlii.",
+              "Analize și rapoarte pentru firme sau uz personal."
+            ])}</ol>
+          </div>
+          <div class="pp-side">
+            <div class="pp-icons">
+              <figure>${ico.db}<figcaption>Bază de date</figcaption></figure>
+              <figure>${ico.tb}<figcaption>Tabel</figcaption></figure>
+              <figure>${ico.fm}<figcaption>Formular</figcaption></figure>
+              <figure>${ico.rp}<figcaption>Raport</figcaption></figure>
+            </div>
+            <p class="pp-ribbon">Proiectează-ți ideile și <span class="nw">dă-le</span> viață cu Access! <span aria-hidden="true">★</span></p>
+          </div>
+        </div>
+      </div>
+    </section>`;
+  }
+
   function renderHome(main) {
     const total = L.reduce((a, l) => a + l.exercitii.length, 0);
     const solved = Object.keys(store.ex).length;
     let h = `<div class="wrap wide">
+      ${posterIntro()}
       <section class="hero">
         <div>
           <div class="eyebrow">Tehnologia informației și a comunicațiilor · clasa a X-a</div>
